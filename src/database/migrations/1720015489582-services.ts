@@ -25,20 +25,10 @@ export class Services1720015489582 implements MigrationInterface {
                     isNullable: false,
                 },
                 {
-                    name: 'price',
-                    type: 'Bigint'
-                },
-                {
                     name: 'created_at',
                     type: 'datetime',
                     default: 'now()'
                 },
-                {
-                    name: 'updated_at',
-                    type: 'datetime',
-                    default: 'now()',
-                    onUpdate: 'now()'
-                }
             ]
         }))
     }
