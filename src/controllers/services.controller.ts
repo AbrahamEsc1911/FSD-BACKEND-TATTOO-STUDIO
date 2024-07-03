@@ -3,56 +3,90 @@ import { Services } from "../database/models/Services";
 
 
 //// GET
-export const getAllServices = async (req : Request, res : Response) => {
+export const getAllServices = async (req: Request, res: Response) => {
     try {
 
         const services = await Services.find()
 
         res.json({
-            success : true,
-            message : 'All services retrieve',
-            data : services
+            success: true,
+            message: 'All services retrieve',
+            data: services
         })
-        
+
     } catch (error) {
         res.status(500).json({
-            success : false,
-            message : 'Error retriving services',
-            rerror : error
+            success: false,
+            message: 'Error retriving services',
+            rerror: error
         })
     }
 }
 
 //// POST
 
-export const createNewServices = async (req : Request, res : Response) => {
+export const createNewServices = async (req: Request, res: Response) => {
     try {
 
-        const { name, description} = req.body
+        const { name, description } = req.body
 
-        if(!name || !description) {
+        if (!name || !description) {
             return res.status(400).json({
                 success: false,
                 message: 'name and description are required'
             })
         }
 
+        /////TODO: validación de super_admin
+
         const createServices = await Services.create({
             name: name,
             description: description,
         }).save()
-        
+
         res.json({
             success: true,
             message: 'new service created',
-            data : createServices
+            data: createServices
         })
-        
+
     } catch (error) {
         res.status(500).json({
-            success : false,
-            message : 'Error creating services',
-            error : error
+            success: false,
+            message: 'Error creating services',
+            error: error
+        })
+    }
+}
+
+//// PUT
+
+export const updateServices = async (req: Request, res: Response) => {
+    try {
+
+        const id = req.params.id
+        const body = req.body
+
+        const serviceUpdated = await Services.update({ id: parseInt(id) }, body)
+
+        if (!serviceUpdated.affected) {
+            return res.status(400).json({
+                success: false,
+                message: 'Service doesnt exist'
+            })
+        }
+
+        res.json({
+            success: true,
+            message: 'service updated',
+            data: serviceUpdated
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'Error updating services',
+            error: error
         })
     }
 }
