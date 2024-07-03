@@ -1,6 +1,7 @@
 import 'dotenv/config'
 import express from 'express';
 import { AppDataSource } from './database/db';
+import { getAllServices } from './controllers/services.controller';
 
 const app = express();
 const port = process.env.PORTCONEXION || 3080;
@@ -9,9 +10,10 @@ const port = process.env.PORTCONEXION || 3080;
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+
+///// SERVICES
+
+app.get('/api/services', getAllServices)
 
 
 AppDataSource.initialize()
