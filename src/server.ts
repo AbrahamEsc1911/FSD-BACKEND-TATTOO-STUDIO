@@ -6,6 +6,8 @@ import { createRoles, deleteRoles, getAllRoles } from './controllers/roles.contr
 import { createUser, loginUser } from './controllers/authentication.controller';
 import { getAllUsers } from './controllers/users.controller';
 import { isSuperAdmin } from './middlewares/isSuperAdmin';
+import { auth } from './middlewares/auth';
+import { isAdminOrSuper } from './middlewares/isAdminOrSuper';
 
 const app = express();
 const port = process.env.PORTCONEXION || 3080;
@@ -18,15 +20,15 @@ app.use(express.json());
 ///// SERVICES
 
 app.get('/api/services', getAllServices)
-app.post('/api/services', createNewServices)
-app.put('/api/services/:id', updateServices)
-app.delete('/api/services/:id', deleteServices)
+app.post('/api/services', auth, isAdminOrSuper, createNewServices)
+app.put('/api/services/:id', auth, isAdminOrSuper, updateServices)
+app.delete('/api/services/:id', auth, isAdminOrSuper, deleteServices)
 
 ///// ROLES
 
-app.get('/api/roles', getAllRoles)
-app.post('/api/roles', createRoles)
-app.delete('/api/roles/:id', deleteRoles)
+app.get('/api/roles', auth, isSuperAdmin, getAllRoles)
+app.post('/api/roles', auth, isSuperAdmin,createRoles)
+app.delete('/api/roles/:id', auth, isSuperAdmin, deleteRoles)
 
 //// AUTENTICACIÓN
 
@@ -36,7 +38,7 @@ app.post('/api/auth/login', loginUser)
 
 //// USERS 
 
-app.get('/api/users', isSuperAdmin, getAllUsers)
+app.get('/api/users', auth, isSuperAdmin, getAllUsers)
 
 
 AppDataSource.initialize()
