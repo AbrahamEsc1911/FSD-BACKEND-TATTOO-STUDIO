@@ -3,6 +3,8 @@ import express from 'express';
 import { AppDataSource } from './database/db';
 import { createNewServices, deleteServices, getAllServices, updateServices } from './controllers/services.controller';
 import { createRoles, deleteRoles, getAllRoles } from './controllers/roles.controller';
+import { createUser, loginUser } from './controllers/authentication.controller';
+import { getAllUsers } from './controllers/users.controller';
 
 const app = express();
 const port = process.env.PORTCONEXION || 3080;
@@ -24,6 +26,16 @@ app.delete('/api/services/:id', deleteServices)
 app.get('/api/roles', getAllRoles)
 app.post('/api/roles', createRoles)
 app.delete('/api/roles/:id', deleteRoles)
+
+//// AUTENTICACIÓN
+
+app.post('/api/auth/register', createUser)
+app.post('/api/auth/login', loginUser)
+
+
+//// USERS 
+
+app.get('/api/users', getAllUsers)
 
 
 AppDataSource.initialize()

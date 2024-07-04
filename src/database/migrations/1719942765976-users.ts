@@ -15,12 +15,14 @@ export class Users1719942765976 implements MigrationInterface {
                 },
                 {
                     name: 'roles_id',
-                    type: 'int'
+                    type: 'int',
+                    default: '1'
                 },
                 {
                     name: 'name',
                     type: 'varchar',
                     length: '70',
+                    isNullable: true,
 
                 },
                 {
@@ -37,16 +39,9 @@ export class Users1719942765976 implements MigrationInterface {
                     isNullable: false,
                 },
                 {
-                    name: 'phone',
-                    type: 'varchar',
-                    length: '15',
-                    isUnique: true,
-                },
-                {
                     name: 'is_active',
                     type: 'Boolean',
-                    default: true,
-                    isNullable: false,
+                    default: true
                 },
                 {
                     name: 'created_at',
