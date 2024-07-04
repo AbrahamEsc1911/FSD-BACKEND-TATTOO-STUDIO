@@ -16,7 +16,7 @@ username: process.env.DB_USERNAME,
 password: process.env.DB_PASSWORD,
 database: process.env.DB_DATABASE,
 entities: [`${__dirname}/models/**/*{.ts,.js}`],
-migrations: [Roles1720014722571, Users1719942765976, Services1720015489582, Appointments1720016459832],
+migrations: [`${__dirname}/migrations/**/*{.ts,.js}`],
 synchronize: false,
 logging: false,
 })
