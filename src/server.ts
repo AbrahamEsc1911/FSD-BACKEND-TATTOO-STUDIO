@@ -5,6 +5,7 @@ import { createNewServices, deleteServices, getAllServices, updateServices } fro
 import { createRoles, deleteRoles, getAllRoles } from './controllers/roles.controller';
 import { createUser, loginUser } from './controllers/authentication.controller';
 import { getAllUsers } from './controllers/users.controller';
+import { isSuperAdmin } from './middlewares/isSuperAdmin';
 
 const app = express();
 const port = process.env.PORTCONEXION || 3080;
@@ -35,7 +36,7 @@ app.post('/api/auth/login', loginUser)
 
 //// USERS 
 
-app.get('/api/users', getAllUsers)
+app.get('/api/users', isSuperAdmin, getAllUsers)
 
 
 AppDataSource.initialize()
