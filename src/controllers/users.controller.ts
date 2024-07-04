@@ -5,21 +5,32 @@ export const getAllUsers = async (req: Request, res: Response) => {
 
     try {
 
-        const allUsers = Users.find()
+        const users = await Users.find(
+            {
+                select: {
+                    name: true,
+                    email: true,
+                    roles_id: true,
+                    is_active: true,
+                    created_at: true,
+
+                }
+            }
+        )
 
         res.json(
             {
                 success: true,
                 message: 'All users registed',
-                data : allUsers
+                data: users
             }
         )
-        
+
     } catch (error) {
         res.status(500).json({
             success: false,
             message: 'Internal Error',
-            error : error
+            error: error
         })
     }
 }
