@@ -4,7 +4,7 @@ import { AppDataSource } from './database/db';
 import { createNewServices, deleteServices, getAllServices, updateServices } from './controllers/services.controller';
 import { createRoles, deleteRoles, getAllRoles } from './controllers/roles.controller';
 import { createUser, loginUser } from './controllers/authentication.controller';
-import { getAllUsers, getProfile } from './controllers/users.controller';
+import { getAllUsers, getProfile, updateUser } from './controllers/users.controller';
 import { isSuperAdmin } from './middlewares/isSuperAdmin';
 import { auth } from './middlewares/auth';
 import { isAdminOrSuper } from './middlewares/isAdminOrSuper';
@@ -40,6 +40,8 @@ app.post('/api/auth/login', loginUser)
 
 app.get('/api/users', auth, isSuperAdmin, getAllUsers)
 app.get('/api/users/profile', auth, getProfile)
+// app.get('/api/users?email=ejemplo@ejemplo.com', auth, isSuperAdmin, getUserByEmail)
+app.put('/api/users/profile', auth, updateUser)
 
 
 AppDataSource.initialize()
