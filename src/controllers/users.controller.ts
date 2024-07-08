@@ -1,6 +1,8 @@
+import bcrypt from 'bcrypt'
 import { Request, Response } from "express";
 import { Users } from "../database/models/Users";
 import { Roles } from "../database/models/Roles";
+import { parse } from "dotenv";
 
 
 //// GET
@@ -68,6 +70,43 @@ export const getProfile = async (req: Request, res: Response) => {
     }
 }
 
+export const getUserByEmail = async (req: Request, res: Response) => {
+    try {
+
+        const email = req.query.email as string
+
+
+        const userByEmail = await Users.findOne({
+            where: { email: email }
+        })
+
+        if (!userByEmail) {
+            return res.json(
+                {
+                    success: false,
+                    message: 'Any user found with that email'
+                }
+            )
+        }
+
+        res.json(
+            {
+                success: true,
+                message: 'user found',
+                data: userByEmail
+            }
+        )
+
+    } catch (error) {
+        res.status(500).json(
+            {
+                success: false,
+                message: 'Error retreaving users by email'
+            }
+        )
+    }
+}
+
 /////TODO
 // export const getUserByEmail = async(req: Request, res: Response) => {
 //     try {
@@ -112,21 +151,16 @@ export const updateUser = async (req: Request, res: Response) => {
     try {
 
         const id = req.tokenData.id
-        const body = req.body
+        const {name, email, password} = req.body
+        const passHashed = bcrypt.hashSync(password, 10)
+        const body = { name: name, email: email, password: passHashed}
+        console.log(body)
 
-        if (!body) {
-            return res.status(400).json(
-                {
-                    success: false,
-                    message: 'nothing to update'
-                }
-            )
-        }
 
         const userUpdated = await Users.update(
             {
                 id: Number(id)
-            }, body
+            }, body,
         )
 
         res.json(
