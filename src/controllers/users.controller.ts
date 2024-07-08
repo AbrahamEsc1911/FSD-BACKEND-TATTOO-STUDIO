@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { Users } from "../database/models/Users";
+import { Roles } from "../database/models/Roles";
 
 
 //// GET
@@ -113,7 +114,7 @@ export const updateUser = async (req: Request, res: Response) => {
         const id = req.tokenData.id
         const body = req.body
 
-        if(!body){
+        if (!body) {
             return res.status(400).json(
                 {
                     success: false,
@@ -146,3 +147,77 @@ export const updateUser = async (req: Request, res: Response) => {
     }
 }
 
+export const updateRoleById = async (req: Request, res: Response) => {
+    try {
+
+        const id = Number(req.params.id)
+        const newRole = req.body ///TODO (Seleccionar unicamente que actualice roles_id, no cualquier cosa sin dar error)
+
+        if (!newRole) {
+            return res.status(400).json(
+                {
+                    success: false,
+                    message: 'please enter a new role or a valid params'
+                }
+            )
+        }
+
+        const roleUpdated = await Users.update(
+            {
+                id: id
+            }, newRole
+        )
+
+        res.json(
+            {
+                success: true,
+                message: 'Role updated successfully',
+                data: roleUpdated
+            }
+        )
+
+    } catch (error) {
+        res.status(500).json(
+            {
+                success: false,
+                message: 'internal error to change Role',
+                error: error
+            }
+        )
+    }
+}
+
+export const deleteUser = async (req: Request, res: Response) => {
+    try {
+
+        const id = Number(req.params.id)
+
+        const userDeleted = await Users.delete(id)
+
+        if (userDeleted.affected === 0) {
+            return res.status(400).json(
+                {
+                    success: false,
+                    message: 'Any user to delete',
+                }
+            )
+        }
+
+        res.json(
+            {
+                success: true,
+                message: 'User deleted',
+                data: userDeleted,
+            }
+        )
+
+    } catch (error) {
+        res.status(500).json(
+            {
+                success: false,
+                message: 'Error deleting user',
+                error: error
+            }
+        )
+    }
+}

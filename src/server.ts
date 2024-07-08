@@ -4,7 +4,7 @@ import { AppDataSource } from './database/db';
 import { createNewServices, deleteServices, getAllServices, updateServices } from './controllers/services.controller';
 import { createRoles, deleteRoles, getAllRoles } from './controllers/roles.controller';
 import { createUser, loginUser } from './controllers/authentication.controller';
-import { getAllUsers, getProfile, updateUser } from './controllers/users.controller';
+import { deleteUser, getAllUsers, getProfile, updateRoleById, updateUser } from './controllers/users.controller';
 import { isSuperAdmin } from './middlewares/isSuperAdmin';
 import { auth } from './middlewares/auth';
 import { isAdminOrSuper } from './middlewares/isAdminOrSuper';
@@ -35,14 +35,14 @@ app.delete('/api/roles/:id', auth, isSuperAdmin, deleteRoles)
 app.post('/api/auth/register', createUser)
 app.post('/api/auth/login', loginUser)
 
-
 //// USERS 
 
 app.get('/api/users', auth, isSuperAdmin, getAllUsers)
 app.get('/api/users/profile', auth, getProfile)
 // app.get('/api/users?email=ejemplo@ejemplo.com', auth, isSuperAdmin, getUserByEmail)
 app.put('/api/users/profile', auth, updateUser)
-
+app.put('/api/users/:id/role', auth, isSuperAdmin, updateRoleById)
+app.delete('/api/users/:id', auth, isSuperAdmin, deleteUser)
 
 AppDataSource.initialize()
     .then(() => {
