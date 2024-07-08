@@ -48,9 +48,17 @@ export const getProfile = async (req: Request, res: Response) => {
 
         const userProfile = await Users.findOne(
             {
+                select: {
+                    name: true,
+                    email: true,
+                    roles_id: true
+
+                },
                 where: {
                     id: id
-                }
+
+                    ////TODO RELATIONS:
+                }, 
             }
         )
 
@@ -70,6 +78,7 @@ export const getProfile = async (req: Request, res: Response) => {
     }
 }
 
+/////TODO
 export const getUserByEmail = async (req: Request, res: Response) => {
     try {
 
@@ -84,7 +93,7 @@ export const getUserByEmail = async (req: Request, res: Response) => {
             return res.json(
                 {
                     success: false,
-                    message: 'Any user found with that email'
+                    message: 'anything found with that email'
                 }
             )
         }
@@ -107,53 +116,14 @@ export const getUserByEmail = async (req: Request, res: Response) => {
     }
 }
 
-/////TODO
-// export const getUserByEmail = async(req: Request, res: Response) => {
-//     try {
-
-//         const email = req.query.email
-
-//         const filterEmail = await Users.findOne(
-//             {
-//                 where: {
-//                     email: email,
-//                 }
-//             }
-//         )
-
-//         if(!filterEmail){
-//             return res.status(400).json(
-//                 {
-//                     success: false,
-//                     message: 'couldnt find the email'
-//                 }
-//             )
-//         }
-
-//         res.json(
-//             {
-//                 success: true,
-//                 message: 'Email filter',
-//                 data: filterEmail
-//             }
-//         )
-
-//     } catch (error) {
-//         res.status(500).json({
-//             success: true,
-//             message: 'Error retrieving data',
-//             error: error
-//         })
-//     }
-// }
-
+////TODO
 export const updateUser = async (req: Request, res: Response) => {
     try {
 
         const id = req.tokenData.id
-        const {name, email, password} = req.body
+        const { name, email, password } = req.body
         const passHashed = bcrypt.hashSync(password, 10)
-        const body = { name: name, email: email, password: passHashed}
+        const body = { name: name, email: email, password: passHashed }
         console.log(body)
 
 
@@ -168,16 +138,15 @@ export const updateUser = async (req: Request, res: Response) => {
                 succes: true,
                 message: 'Profile updated successfully',
                 data: userUpdated
-            }
-        )
+            })
 
     } catch (error) {
         res.status(500).json({
             success: false,
             message: 'Wrong request to update user profile',
             error: error
-        })
 
+        })
     }
 }
 
