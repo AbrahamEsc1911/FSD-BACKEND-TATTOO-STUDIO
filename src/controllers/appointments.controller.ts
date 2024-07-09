@@ -82,3 +82,47 @@ export const getAllAppoinmentsByUserId = async (req: Request, res: Response) => 
         )
     }
 }
+
+//// PUT
+
+export const createAppointments = async (req: Request, res: Response) => {
+    try {
+
+        const id = req.tokenData.id
+        const { services_id, due_date } = req.body
+
+        if (!services_id || !due_date) {
+            return res.status(400).json(
+                {
+                    success: false,
+                    message: 'services and date are requiered'
+                }
+            )
+        }
+
+        const newAppointment = await Appointments.create(
+            {
+                users_id: id,
+                services_id: Number(services_id),
+                due_date: new Date(due_date)
+            }
+        ).save()
+
+        res.json(
+            {
+                success: true,
+                message: 'Appointment created',
+                data: newAppointment
+            }
+        )
+
+    } catch (error) {
+        res.status(500).json(
+            {
+                success: false,
+                message: 'Internal Error adding new appointmens',
+                error: error
+            }
+        )
+    }
+}
