@@ -126,3 +126,51 @@ export const createAppointments = async (req: Request, res: Response) => {
         )
     }
 }
+
+//// UPDATE
+
+export const updateAppointments = async (req: Request, res: Response) => {
+    try {
+
+        const appoinmentId = req.body.id
+        const body = req.body
+        const date = new Date()
+
+        if (!appoinmentId) {
+            return res.status(400).json(
+                {
+                    success: false,
+                    message: 'appointments Id is required'
+                }
+            )
+        }
+
+        if (new Date(req.body.due_date) < date) {
+            return res.status(400).json(
+                {
+                    success: false,
+                    message: 'The appointment date cannot be in the past'
+                }
+            )
+        }
+
+        const appoinmentUpdated = await Appointments.update({ id: appoinmentId }, body)
+
+        res.json(
+            {
+                success: true,
+                message: 'Appointment update',
+                data: appoinmentUpdated
+            }
+        )
+
+    } catch (error) {
+        res.status(500).json(
+            {
+                success: false,
+                message: 'Internal error updating an apointment',
+                error: error
+            }
+        )
+    }
+}
