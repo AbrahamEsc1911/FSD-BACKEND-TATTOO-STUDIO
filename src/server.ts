@@ -8,7 +8,7 @@ import { deleteUser, getAllUsers, getProfile, getUserByEmail, updateRoleById, up
 import { isSuperAdmin } from './middlewares/isSuperAdmin';
 import { auth } from './middlewares/auth';
 import { isAdminOrSuper } from './middlewares/isAdminOrSuper';
-import { getAppointments } from './controllers/appointments.controller';
+import { getAllAppoinmentsByUserId, getAppointmentsById } from './controllers/appointments.controller';
 
 const app = express();
 const port = process.env.PORTCONEXION || 3080;
@@ -47,7 +47,8 @@ app.delete('/api/users/:id', auth, isSuperAdmin, deleteUser)
 
 //// CITAS
 
-app.get('/api/appointments/:id', getAppointments)
+app.get('/api/appointments/:id', getAppointmentsById)
+app.get('/api/appointments', auth, getAllAppoinmentsByUserId)
 
 
 AppDataSource.initialize()
