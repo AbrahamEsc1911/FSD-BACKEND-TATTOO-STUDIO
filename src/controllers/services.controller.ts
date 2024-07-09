@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { Services } from "../database/models/Services";
 
 
+
 //// GET
 export const getAllServices = async (req: Request, res: Response) => {
     try {
@@ -28,12 +29,12 @@ export const getAllServices = async (req: Request, res: Response) => {
 export const createNewServices = async (req: Request, res: Response) => {
     try {
 
-        const { name, description } = req.body
+        const { name, description, tattooist } = req.body
 
-        if (!name || !description) {
+        if (!name || !description || tattooist) {
             return res.status(400).json({
                 success: false,
-                message: 'name and description are required'
+                message: 'name, description and tattooist are required'
             })
         }
 
@@ -42,6 +43,7 @@ export const createNewServices = async (req: Request, res: Response) => {
         const createServices = await Services.create({
             name: name,
             description: description,
+            tattooist: tattooist
         }).save()
 
         res.json({

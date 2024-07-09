@@ -30,12 +30,12 @@ export class Services1720539771695 implements MigrationInterface {
                     default: 'now()'
                 },
                 {
-                    name: 'tattoist_id',
+                    name: 'tattooist_id',
                     type: 'int'
                 },
             ], foreignKeys: [
                 {
-                    columnNames: ['tattoist_id'],
+                    columnNames: ['tattooist_id'],
                     referencedTableName: 'tattooist',
                     referencedColumnNames: ['id']
                 }

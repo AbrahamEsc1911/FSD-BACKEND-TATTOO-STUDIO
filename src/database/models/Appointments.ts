@@ -8,8 +8,8 @@ export class Appointments extends BaseEntity {
     @PrimaryGeneratedColumn()
     id!: number
 
-    @Column({ name: 'user_id' })
-    user_id!: number
+    @Column({ name: 'users_id' })
+    users_id!: number
 
     @Column({ name: 'services_id' })
     services_id!: number
@@ -20,14 +20,14 @@ export class Appointments extends BaseEntity {
     @Column({ name: 'is_active' })
     is_active!: boolean
 
-    @Column({ name: 'crated_at' })
+    @Column({ name: 'created_at' })
     created_at!: Date
 
     @Column({ name: 'updated_at' })
     updated_at!: Date
 
     @ManyToOne(() => Users, (user) => user.appointments)
-    @JoinColumn({ name: 'user_id' })
+    @JoinColumn({ name: 'users_id' })
     user!: Users
 
     @ManyToOne(() => Services, (service) => service.appointments)
