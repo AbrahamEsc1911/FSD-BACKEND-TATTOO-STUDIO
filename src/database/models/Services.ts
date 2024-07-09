@@ -1,5 +1,6 @@
-import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
+import { BaseEntity, Column, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm"
 import { Appointments } from "./Appointments"
+import { Tattooist } from "./Tattooist"
 
 @Entity('services')
 export class Services extends BaseEntity {
@@ -15,6 +16,13 @@ export class Services extends BaseEntity {
     @Column({ name : 'created_at'})
     created_at! : Date
 
+    @Column({ name: 'tattooist_id' })
+    tattooist_id!: number
+
     @OneToMany(() =>  Appointments, (appointments) =>appointments.service)
     appointments!: Appointments[]
+
+    @ManyToOne(()=> Tattooist, (tattooist) => tattooist.service)
+    @JoinColumn({ name: 'tattooist_id' })
+    tattooist!: Tattooist
 }
