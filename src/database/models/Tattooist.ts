@@ -11,5 +11,5 @@ export class Tattooist extends BaseEntity {
     name!: string
 
     @OneToMany(() => Services, (service) =>service.tattooist)
-    service!: Services[]
+    services!: Services[]
 }

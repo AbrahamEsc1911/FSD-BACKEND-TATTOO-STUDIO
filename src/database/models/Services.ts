@@ -22,7 +22,7 @@ export class Services extends BaseEntity {
     @OneToMany(() =>  Appointments, (appointments) =>appointments.service)
     appointments!: Appointments[]
 
-    @ManyToOne(()=> Tattooist, (tattooist) => tattooist.service)
+    @ManyToOne(()=> Tattooist, (tattooist) => tattooist.services)
     @JoinColumn({ name: 'tattooist_id' })
     tattooist!: Tattooist
 }
