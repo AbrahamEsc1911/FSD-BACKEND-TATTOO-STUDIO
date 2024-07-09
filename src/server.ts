@@ -37,9 +37,9 @@ app.post('/api/auth/login', loginUser)
 
 //// USERS 
 
-app.get('/api/users?:email', auth, isSuperAdmin, getUserByEmail) 
 app.get('/api/users', auth, isSuperAdmin, getAllUsers)
 app.get('/api/users/profile', auth, getProfile)
+app.get('/api/users/filters', auth, isSuperAdmin, getUserByEmail) 
 app.put('/api/users/profile', auth, updateUser)
 app.put('/api/users/:id/role', auth, isSuperAdmin, updateRoleById)
 app.delete('/api/users/:id', auth, isSuperAdmin, deleteUser)

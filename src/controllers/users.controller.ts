@@ -58,7 +58,7 @@ export const getProfile = async (req: Request, res: Response) => {
                     id: id
 
                     ////TODO RELATIONS:
-                }, 
+                },
             }
         )
 
@@ -121,9 +121,15 @@ export const updateUser = async (req: Request, res: Response) => {
     try {
 
         const id = req.tokenData.id
-        const { name, email, password } = req.body
-        const passHashed = bcrypt.hashSync(password, 10)
-        const body = { name: name, email: email, password: passHashed }
+        const { name, email } = req.body
+        let password = req.body.password
+        console.log(password)
+
+        if (password) {
+            password = bcrypt.hashSync(password, 10)
+        }
+        console.log(2)
+        const body = { name: name, email: email, password: password }
         console.log(body)
 
 
@@ -140,11 +146,11 @@ export const updateUser = async (req: Request, res: Response) => {
                 data: userUpdated
             })
 
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({
             success: false,
             message: 'Wrong request to update user profile',
-            error: error
+            error: error.message
 
         })
     }
