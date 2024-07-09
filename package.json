@@ -9,7 +9,10 @@
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate": "typeorm-ts-node-commonjs migration:run -d ./src/database/db.ts",
-    "revert:migrations": "npx typeorm-ts-node-commonjs migration:revert -d ./src/database/db.ts"
+    "revert:migrations": "npx typeorm-ts-node-commonjs migration:revert -d ./src/database/db.ts",
+    "db:drop": "npx typeorm-ts-node-commonjs schema:drop -d ./src/database/db.ts",
+    "db:seed": "npx ts-node ./src/database/seeders/dbSeeders.ts",
+    "db:refresh": "npm run db:drop && npm run migrate && npm run db:seed"
   },
   "author": "",
   "license": "ISC",

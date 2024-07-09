@@ -44,6 +44,7 @@ app.put('/api/users/profile', auth, updateUser)
 app.put('/api/users/:id/role', auth, isSuperAdmin, updateRoleById)
 app.delete('/api/users/:id', auth, isSuperAdmin, deleteUser)
 
+//// CITAS
 
 AppDataSource.initialize()
     .then(() => {

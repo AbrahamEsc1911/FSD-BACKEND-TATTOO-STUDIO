@@ -1,7 +1,6 @@
-import { query } from "express";
-import { Column, MigrationInterface, QueryRunner, Table } from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class Roles1720014722571 implements MigrationInterface {
+export class Roles1720539717144 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table ({
