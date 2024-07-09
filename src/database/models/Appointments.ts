@@ -1,26 +1,37 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm"
+import { BaseEntity, Column, Entity, JoinColumn, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
+import { Users } from "./Users"
+import { Services } from "./Services"
 
 @Entity('appointments')
-export class Appointments extends BaseEntity{
-    
+export class Appointments extends BaseEntity {
+
     @PrimaryGeneratedColumn()
     id!: number
 
-    @Column({ name: 'user_id '})
+    @Column({ name: 'user_id' })
     user_id!: number
-    
-    @Column({ name: 'services_id '})
+
+    @Column({ name: 'services_id' })
     services_id!: number
 
-    @Column({ name: 'due_date '})
+    @Column({ name: 'due_date' })
     due_date!: Date
 
-    @Column({ name: 'is_active '})
+    @Column({ name: 'is_active' })
     is_active!: boolean
 
-    @Column({ name: 'crated_at'})
+    @Column({ name: 'crated_at' })
     created_at!: Date
 
-    @Column({ name: 'updated_at '})
+    @Column({ name: 'updated_at' })
     updated_at!: Date
+
+    @ManyToOne(() => Users, (user) => user.appointments)
+    @JoinColumn({ name: 'user_id' })
+    user!: Users
+
+    @ManyToOne(() => Services, (service) => service.appointments)
+    @JoinColumn({ name: 'services_id' })
+    service!: Services
+
 }
