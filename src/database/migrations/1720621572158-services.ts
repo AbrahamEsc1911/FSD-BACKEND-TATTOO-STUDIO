@@ -30,14 +30,14 @@ export class Services1720621572158 implements MigrationInterface {
                     default: 'now()'
                 },
                 {
-                    name: 'artists_id',
+                    name: 'users_id',
                     type: 'int',
                     isNullable: true,
                 },
             ], foreignKeys: [
                 {
-                    columnNames: ['artists_id'],
-                    referencedTableName: 'artists',
+                    columnNames: ['users_id'],
+                    referencedTableName: 'users',
                     referencedColumnNames: ['id']
                 }
             ]
