@@ -24,6 +24,7 @@ export const usersSeeders = async () => {
 
         console.log('===========================');
         console.log('Users seeder successfully');
+        console.log('===========================');
 
 
     } catch (error: any) {

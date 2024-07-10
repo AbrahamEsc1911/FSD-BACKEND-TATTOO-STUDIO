@@ -27,6 +27,7 @@ export const rolesSeeders = async () => {
 
         console.log('===========================');
         console.log('Roles seeder successfully');
+        console.log('===========================');
 
 
     } catch (error: any) {
