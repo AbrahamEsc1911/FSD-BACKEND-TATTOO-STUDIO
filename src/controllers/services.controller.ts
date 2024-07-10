@@ -29,12 +29,12 @@ export const getAllServices = async (req: Request, res: Response) => {
 export const createNewServices = async (req: Request, res: Response) => {
     try {
 
-        const { name, description, tattooist } = req.body
+        const { name, description, artists } = req.body
 
-        if (!name || !description || tattooist) {
+        if (!name || !description || artists) {
             return res.status(400).json({
                 success: false,
-                message: 'name, description and tattooist are required'
+                message: 'name, description and artists are required'
             })
         }
 
@@ -43,7 +43,7 @@ export const createNewServices = async (req: Request, res: Response) => {
         const createServices = await Services.create({
             name: name,
             description: description,
-            tattooist: tattooist
+            artists: artists
         }).save()
 
         res.json({
