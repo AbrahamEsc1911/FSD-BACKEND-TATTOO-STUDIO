@@ -47,7 +47,7 @@ app.delete('/api/users/:id', auth, isSuperAdmin, deleteUser)
 
 //// CITAS
 
-app.get('/api/appointments/:id', getAppointmentsById)
+app.get('/api/appointments/:id', auth, isSuperAdmin, getAppointmentsById)
 app.get('/api/appointments', auth, getAllAppoinmentsByUserId)
 app.post('/api/appointments', auth, createAppointments)
 app.put('/api/appointments', auth, updateAppointments)

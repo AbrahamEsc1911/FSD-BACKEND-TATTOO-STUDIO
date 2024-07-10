@@ -26,7 +26,7 @@ export const getAppointmentsById = async (req: Request, res: Response) => {
         res.json(
             {
                 success: true,
-                message: 'Date filter by Id',
+                message: 'Appointment filter by Id',
                 data: appoinment
             }
         )
@@ -90,12 +90,22 @@ export const createAppointments = async (req: Request, res: Response) => {
 
         const id = req.tokenData.id
         const { services_id, due_date } = req.body
+        const date = new Date()
 
         if (!services_id || !due_date) {
             return res.status(400).json(
                 {
                     success: false,
                     message: 'services and date are requiered'
+                }
+            )
+        }
+        
+        if (new Date(req.body.due_date) < date) {
+            return res.status(400).json(
+                {
+                    success: false,
+                    message: 'The appointment date cannot be in the past'
                 }
             )
         }

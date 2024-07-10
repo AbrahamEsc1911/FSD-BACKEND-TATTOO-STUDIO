@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class Tattooist1720538776360 implements MigrationInterface {
+export class Artists1720621453812 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
-            name: 'tattooist',
+            name: 'artists',
             columns: [
                 {
                     name: 'id',
@@ -17,13 +17,25 @@ export class Tattooist1720538776360 implements MigrationInterface {
                     name: 'name',
                     type: 'varchar',
                     length: '250'
+                },
+                {
+                    name: 'roles_id',
+                    type: 'int',
+                    default: 2
+                }
+            ], foreignKeys: [
+                {
+                    columnNames: ['roles_id'],
+                    referencedTableName: 'roles',
+                    referencedColumnNames: ['id']
                 }
             ]
         }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('tattooist')
+        await queryRunner.dropTable('artists')
     }
 
 }
+

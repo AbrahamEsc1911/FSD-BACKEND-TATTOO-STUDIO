@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class Services1720539771695 implements MigrationInterface {
+export class Services1720621572158 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
@@ -30,13 +30,14 @@ export class Services1720539771695 implements MigrationInterface {
                     default: 'now()'
                 },
                 {
-                    name: 'tattooist_id',
-                    type: 'int'
+                    name: 'artists_id',
+                    type: 'int',
+                    isNullable: true,
                 },
             ], foreignKeys: [
                 {
-                    columnNames: ['tattooist_id'],
-                    referencedTableName: 'tattooist',
+                    columnNames: ['artists_id'],
+                    referencedTableName: 'artists',
                     referencedColumnNames: ['id']
                 }
             ]
