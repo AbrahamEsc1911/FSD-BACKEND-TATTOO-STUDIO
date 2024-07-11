@@ -61,7 +61,7 @@ export const loginUser = async (req: Request, res: Response) => {
             return res.status(400).json(
                 {
                     success: false,
-                    message: 'email and password are requiered'
+                    message: 'email and password are required'
                 }
             )
         }
@@ -120,7 +120,7 @@ export const loginUser = async (req: Request, res: Response) => {
     }
 }
 
-export const createAdmin = async(req: Request, res: Response) => {
+export const createAdmin = async (req: Request, res: Response) => {
     try {
 
         const { name, email, password } = req.body

@@ -42,7 +42,6 @@ export const usersSeeders = async () => {
     }
 }
 
-
 const createUsers = async (arr: object[]) => {
     const newUsers: Users[] = []
 

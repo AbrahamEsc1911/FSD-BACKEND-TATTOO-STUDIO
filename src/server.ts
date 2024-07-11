@@ -20,22 +20,22 @@ app.use(express.json());
 
 ///// SERVICES
 
-app.get('/api/services', getAllServices)
-app.post('/api/services', auth, isAdminOrSuper, createNewServices)
-app.put('/api/services/:id', auth, isAdminOrSuper, updateServices)
-app.delete('/api/services/:id', auth, isAdminOrSuper, deleteServices)
+// app.get('/api/services', getAllServices)
+// app.post('/api/services', auth, isAdminOrSuper, createNewServices)
+// app.put('/api/services/:id', auth, isAdminOrSuper, updateServices)
+// app.delete('/api/services/:id', auth, isAdminOrSuper, deleteServices)
 
 ///// ROLES
 
-app.get('/api/roles', auth, isSuperAdmin, getAllRoles)
-app.post('/api/roles', auth, isSuperAdmin, createRoles)
-app.delete('/api/roles/:id', auth, isSuperAdmin, deleteRoles)
+// app.get('/api/roles', auth, isSuperAdmin, getAllRoles)
+// app.post('/api/roles', auth, isSuperAdmin, createRoles)
+// app.delete('/api/roles/:id', auth, isSuperAdmin, deleteRoles)
 
 //// AUTENTICACIÓN
 
-app.post('/api/auth/register', createUser)
-app.post('/api/auth/admin', createAdmin)
-app.post('/api/auth/login', loginUser)
+// app.post('/api/auth/register', createUser)
+// app.post('/api/auth/admin', createAdmin)
+// app.post('/api/auth/login', loginUser)
 
 //// USERS 
 
