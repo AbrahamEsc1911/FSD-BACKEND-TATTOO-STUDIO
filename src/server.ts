@@ -3,7 +3,7 @@ import express from 'express';
 import { AppDataSource } from './database/db';
 import { createNewServices, deleteServices, getAllServices, updateServices } from './controllers/services.controller';
 import { createRoles, deleteRoles, getAllRoles } from './controllers/roles.controller';
-import { createUser, loginUser } from './controllers/authentication.controller';
+import { createAdmin, createUser, loginUser } from './controllers/authentication.controller';
 import { deleteUser, getAllUsers, getProfile, getUserByEmail, updateRoleById, updateUser, } from './controllers/users.controller';
 import { isSuperAdmin } from './middlewares/isSuperAdmin';
 import { auth } from './middlewares/auth';
@@ -34,6 +34,7 @@ app.delete('/api/roles/:id', auth, isSuperAdmin, deleteRoles)
 //// AUTENTICACIÓN
 
 app.post('/api/auth/register', createUser)
+app.post('/api/auth/admin', createAdmin)
 app.post('/api/auth/login', loginUser)
 
 //// USERS 

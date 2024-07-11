@@ -29,9 +29,9 @@ export const getAllServices = async (req: Request, res: Response) => {
 export const createNewServices = async (req: Request, res: Response) => {
     try {
 
-        const { name, description, artists } = req.body
+        const { name, description } = req.body
 
-        if (!name || !description || artists) {
+        if (!name || !description) {
             return res.status(400).json({
                 success: false,
                 message: 'name, description and artists are required'
@@ -43,7 +43,7 @@ export const createNewServices = async (req: Request, res: Response) => {
         const createServices = await Services.create({
             name: name,
             description: description,
-            artists: artists
+          
         }).save()
 
         res.json({
