@@ -41,11 +41,21 @@ export class Appointments1720621586454 implements MigrationInterface {
                     type: 'datetime',
                     default: 'now()',
                     onUpdate: 'now()'
+                },
+                {
+                    name: 'artists_id',
+                    type: 'int',
                 }
             ],
             foreignKeys: [
                 {
                     columnNames: ['users_id'],
+                    referencedTableName: 'users',
+                    referencedColumnNames: ['id']
+
+                },
+                {
+                    columnNames: ['artists_id'],
                     referencedTableName: 'users',
                     referencedColumnNames: ['id']
 

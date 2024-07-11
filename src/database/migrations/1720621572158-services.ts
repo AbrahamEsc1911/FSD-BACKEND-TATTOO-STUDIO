@@ -29,18 +29,7 @@ export class Services1720621572158 implements MigrationInterface {
                     type: 'datetime',
                     default: 'now()'
                 },
-                {
-                    name: 'users_id',
-                    type: 'int',
-                    isNullable: true,
-                },
-            ], foreignKeys: [
-                {
-                    columnNames: ['users_id'],
-                    referencedTableName: 'users',
-                    referencedColumnNames: ['id']
-                }
-            ]
+            ],
         }))
     }
 

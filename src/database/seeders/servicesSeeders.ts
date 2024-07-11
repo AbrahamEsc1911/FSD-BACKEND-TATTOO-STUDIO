@@ -25,7 +25,7 @@ export const servicesSeeders = async () => {
     } catch (error: any) {
 
         console.log('===========================');
-        console.log('ERROR USERS SEEDER', error.message);
+        console.log('ERROR SERVICES SEEDER', error.message);
         console.log('===========================');
 
     } finally {

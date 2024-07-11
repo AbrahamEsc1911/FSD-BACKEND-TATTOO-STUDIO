@@ -1,3 +1,4 @@
+import { appointmentsSeeders } from "./appointmentesSeeders";
 import { rolesSeeders } from "./rolesSeeders"
 import { servicesSeeders } from "./servicesSeeders";
 import { usersSeeders } from "./usersSeeders";
@@ -7,5 +8,6 @@ import { usersSeeders } from "./usersSeeders";
     await rolesSeeders()
     await usersSeeders()
     await servicesSeeders()
+    await appointmentsSeeders()
     console.log('finish seeders')
 })()
