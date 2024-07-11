@@ -10,7 +10,7 @@ export const usersSeeders = async () => {
         await AppDataSource.initialize()
 
         const users = [
-            { name: "Alice Johnson", email: "alice.johnson@example.com", password: "12345678", roles_id: 3 },
+            { name: "Abraham Escobar", email: "abraham.escobar@example.com", password: "12345678", roles_id: 3 },
             { name: "Bob Smith", email: "bob.smith@example.com", password: "12345678", roles_id: 3 },
             { name: "Carol Williams", email: "carol.williams@example.com", password: "12345678", roles_id: 2 },
             { name: "David Brown", email: "david.brown@example.com", password: "12345678", roles_id: 2 },

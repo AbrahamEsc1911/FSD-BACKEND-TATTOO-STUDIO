@@ -29,11 +29,11 @@ export class Appointments extends BaseEntity {
     @Column({ name: 'artists_id' })
     artists_id!: number
 
-    @ManyToOne(() => Users, (user) => user.appointments)
+    @ManyToOne(() => Users, user => user.appointments)
     @JoinColumn({ name: 'users_id' })
     user!: Users
 
-    @ManyToOne(() => Services, (service) => service.appointments)
+    @ManyToOne(() => Services, service => service.appointments)
     @JoinColumn({ name: 'services_id' })
     service!: Services
 

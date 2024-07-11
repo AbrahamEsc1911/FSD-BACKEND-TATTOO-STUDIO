@@ -14,10 +14,13 @@ export const getAllUsers = async (req: Request, res: Response) => {
                 select: {
                     name: true,
                     email: true,
-                    roles_id: true,
-                    is_active: true,
                     created_at: true,
-
+                    role: {
+                        name: true,
+                    }
+                },
+                relations: {
+                    role: true,
                 }
             }
         )
@@ -49,14 +52,17 @@ export const getProfile = async (req: Request, res: Response) => {
                 select: {
                     name: true,
                     email: true,
-                    roles_id: true
-
+                    created_at: true,
+                    role: {
+                        name: true,
+                    }
                 },
                 where: {
                     id: id
-
-                    ////TODO RELATIONS:
                 },
+                // relations: {
+                //     role: true,
+                // },
             }
         )
 
@@ -68,10 +74,11 @@ export const getProfile = async (req: Request, res: Response) => {
             }
         )
 
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({
             success: false,
-            message: 'error retriving user profile'
+            message: 'error retriving user profile',
+            error: error.message
         })
     }
 }
@@ -83,7 +90,21 @@ export const getUserByEmail = async (req: Request, res: Response) => {
 
 
         const userByEmail = await Users.findOne({
-            where: { email: email }
+            select: {
+                id: true,
+                name: true,
+                email: true,
+                created_at: true,
+                role: {
+                    name: true,
+                }
+            },
+            where: { 
+                email: email 
+            }, 
+            relations: {
+                role: true,
+            }
         })
 
         if (!userByEmail) {
@@ -107,7 +128,8 @@ export const getUserByEmail = async (req: Request, res: Response) => {
         res.status(500).json(
             {
                 success: false,
-                message: 'Error retreaving users by email'
+                message: 'Error retreaving users by email',
+                error: error
             }
         )
     }
@@ -115,16 +137,25 @@ export const getUserByEmail = async (req: Request, res: Response) => {
 
 export const getAllArtists = async (req: Request, res: Response) => {
     try {
-        
+
         const artists = await Users.find(
-            {
+            {   select: {
+                name:true,
+                email: true,
+                role: {
+                    name: true,
+                }
+            },
                 where: {
                     roles_id: 2
+                },
+                relations: {
+                    role: true
                 }
             }
         )
 
-        if(!artists){
+        if (!artists) {
             return res.status(400).json(
                 {
                     success: false,
@@ -142,7 +173,7 @@ export const getAllArtists = async (req: Request, res: Response) => {
         )
 
     } catch (error) {
-        
+
         res.status(500).json(
             {
                 success: false,

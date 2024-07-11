@@ -29,10 +29,10 @@ export class Users extends BaseEntity {
     @Column({ name: 'updated_at' })
     updated_at!: Date
 
-    @ManyToOne(() => Roles, (roles) => roles.users)
+    @ManyToOne(() => Roles, roles => roles.users)
     @JoinColumn({ name: 'roles_id' })
     role!: Roles
 
-    @OneToMany(() => Appointments, (appointments) => appointments.user)
+    @OneToMany(() => Appointments, appointments => appointments.user)
     appointments!: Appointments[]
 }
