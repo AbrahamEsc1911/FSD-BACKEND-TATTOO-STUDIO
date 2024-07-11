@@ -48,14 +48,14 @@ const createUsers = async (arr: object[]) => {
 
     arr.forEach((element: any, index: any) => {
 
-  
+        const passHashed = bcrypt.hashSync(element.password, 10)
 
         const user = new Users()
         user.id = index + 1
         user.roles_id = element.roles_id
         user.name = element.name
         user.email = element.email
-        user.password = element.password
+        user.password = passHashed
         newUsers.push(user)
     })
 
