@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
+const express_1 = require("express");
+const auth_1 = require("../middlewares/auth");
+const isSuperAdmin_1 = require("../middlewares/isSuperAdmin");
+const appointments_controller_1 = require("../controllers/appointments.controller");
+const router = (0, express_1.Router)();
+exports.router = router;
+router.get('/:id', auth_1.auth, isSuperAdmin_1.isSuperAdmin, appointments_controller_1.getAppointmentsById);
+router.get('/', auth_1.auth, appointments_controller_1.getAllAppoinmentsByUserId);
+router.post('/', auth_1.auth, appointments_controller_1.createAppointments);
+router.put('/', auth_1.auth, appointments_controller_1.updateAppointments);
