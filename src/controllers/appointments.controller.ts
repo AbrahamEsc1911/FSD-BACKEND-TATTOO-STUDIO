@@ -10,7 +10,9 @@ export const getAppointmentsById = async (req: Request, res: Response) => {
 
         const appoinment = await Appointments.findOne(
             {
-                select: { ///TODO
+                select: {
+                    id: true,
+                    due_date: true,
                     user: {
                         id: true,
                         name: true,
@@ -22,7 +24,7 @@ export const getAppointmentsById = async (req: Request, res: Response) => {
                         description: true,
                     },
                     artist: {
-                        name:true,
+                        name: true,
                     }
                 },
 
@@ -72,7 +74,9 @@ export const getAllAppoinmentsByUserId = async (req: Request, res: Response) => 
 
         const userAppointments = await Appointments.find(
             {
-                select: { ///TODO
+                select: {
+                    id: true,
+                    due_date: true,
                     user: {
                         id: true,
                         name: true,
@@ -84,7 +88,7 @@ export const getAllAppoinmentsByUserId = async (req: Request, res: Response) => 
                         description: true,
                     },
                     artist: {
-                        name:true,
+                        name: true,
                     }
                 },
                 where: {

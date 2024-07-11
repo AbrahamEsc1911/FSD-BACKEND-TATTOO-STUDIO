@@ -117,7 +117,7 @@ export const deleteServices = async (req: Request, res: Response) => {
     } catch (error) {
         res.status(500).json({
             success: true,
-            message: "Server error",
+            message: "Error trying to delete this service",
             error: error
         })
     }

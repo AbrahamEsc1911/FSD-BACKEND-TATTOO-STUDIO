@@ -50,6 +50,7 @@ export const getProfile = async (req: Request, res: Response) => {
         const userProfile = await Users.findOne(
             {
                 select: {
+                    id: true,
                     name: true,
                     email: true,
                     created_at: true,
@@ -60,9 +61,9 @@ export const getProfile = async (req: Request, res: Response) => {
                 where: {
                     id: id
                 },
-                // relations: {
-                //     role: true,
-                // },
+                relations: {
+                    role: true,
+                },
             }
         )
 
@@ -99,9 +100,9 @@ export const getUserByEmail = async (req: Request, res: Response) => {
                     name: true,
                 }
             },
-            where: { 
-                email: email 
-            }, 
+            where: {
+                email: email
+            },
             relations: {
                 role: true,
             }
@@ -139,13 +140,14 @@ export const getAllArtists = async (req: Request, res: Response) => {
     try {
 
         const artists = await Users.find(
-            {   select: {
-                name:true,
-                email: true,
-                role: {
+            {
+                select: {
                     name: true,
-                }
-            },
+                    email: true,
+                    role: {
+                        name: true,
+                    }
+                },
                 where: {
                     roles_id: 2
                 },
@@ -193,14 +195,12 @@ export const updateUser = async (req: Request, res: Response) => {
         const id = req.tokenData.id
         const { name, email } = req.body
         let password = req.body.password
-        console.log(password)
 
         if (password) {
             password = bcrypt.hashSync(password, 10)
         }
-        console.log(2)
         const body = { name: name, email: email, password: password }
-        console.log(body)
+
 
 
         const userUpdated = await Users.update(
@@ -230,7 +230,8 @@ export const updateRoleById = async (req: Request, res: Response) => {
     try {
 
         const id = Number(req.params.id)
-        const newRole = req.body ///TODO (Seleccionar unicamente que actualice roles_id, no cualquier cosa sin dar error)
+
+        const newRole = req.body.roles_id
 
         if (!newRole) {
             return res.status(400).json(
@@ -241,10 +242,9 @@ export const updateRoleById = async (req: Request, res: Response) => {
             )
         }
 
-        const roleUpdated = await Users.update(
-            {
-                id: id
-            }, newRole
+        const roleUpdated = await Users.update(id, {
+            roles_id: newRole
+        }
         )
 
         res.json(

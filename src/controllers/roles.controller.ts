@@ -10,10 +10,10 @@ export const getAllRoles = async (req: Request, res: Response) => {
         const allRoles = await Roles.find(
             {
                 select: {
-                    name:true,
+                    name: true,
                     users: {
-                        name:true,
-                        email:true,
+                        name: true,
+                        email: true,
                     }
                 },
                 relations: {
