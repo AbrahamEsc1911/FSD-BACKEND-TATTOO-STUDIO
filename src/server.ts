@@ -39,20 +39,20 @@ app.use(express.json());
 
 //// USERS 
 
-app.get('/api/users', auth, isSuperAdmin, getAllUsers)
-app.get('/api/users/profile', auth, getProfile)
-app.get('/api/users/filters', auth, isSuperAdmin, getUserByEmail)
-app.get('/api/users/artists', getAllArtists)
-app.put('/api/users/profile', auth, updateUser)
-app.put('/api/users/:id/role', auth, isSuperAdmin, updateRoleById)
-app.delete('/api/users/:id', auth, isSuperAdmin, deleteUser)
+// app.get('/api/users', auth, isSuperAdmin, getAllUsers)
+// app.get('/api/users/profile', auth, getProfile)
+// app.get('/api/users/filters', auth, isSuperAdmin, getUserByEmail)
+// app.get('/api/users/artists', getAllArtists)
+// app.put('/api/users/profile', auth, updateUser)
+// app.put('/api/users/:id/role', auth, isSuperAdmin, updateRoleById)
+// app.delete('/api/users/:id', auth, isSuperAdmin, deleteUser)
 
 //// CITAS
 
-app.get('/api/appointments/:id', auth, isSuperAdmin, getAppointmentsById)
-app.get('/api/appointments', auth, getAllAppoinmentsByUserId)
-app.post('/api/appointments', auth, createAppointments)
-app.put('/api/appointments', auth, updateAppointments)
+// app.get('/api/appointments/:id', auth, isSuperAdmin, getAppointmentsById)
+// app.get('/api/appointments', auth, getAllAppoinmentsByUserId)
+// app.post('/api/appointments', auth, createAppointments)
+// app.put('/api/appointments', auth, updateAppointments)
 
 
 
