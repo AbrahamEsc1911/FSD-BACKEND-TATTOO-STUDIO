@@ -89,14 +89,14 @@ export const createAppointments = async (req: Request, res: Response) => {
     try {
 
         const id = req.tokenData.id
-        const { services_id, due_date } = req.body
+        const { services_id, due_date, artists_id } = req.body
         const date = new Date()
 
-        if (!services_id || !due_date) {
+        if (!services_id || !due_date || !artists_id) {
             return res.status(400).json(
                 {
                     success: false,
-                    message: 'services and date are requiered'
+                    message: 'services, date and artist are required'
                 }
             )
         }
@@ -114,7 +114,8 @@ export const createAppointments = async (req: Request, res: Response) => {
             {
                 users_id: id,
                 services_id: Number(services_id),
-                due_date: new Date(due_date)
+                due_date: new Date(due_date),
+                artists_id: artists_id
             }
         ).save()
 
