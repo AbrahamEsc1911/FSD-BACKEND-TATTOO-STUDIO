@@ -33,6 +33,10 @@ export class Appointments extends BaseEntity {
     @JoinColumn({ name: 'users_id' })
     user!: Users
 
+    @ManyToOne(() => Users, artist => artist.appointmentsArtist)
+    @JoinColumn({ name: 'artists_id' })
+    artist!: Users
+
     @ManyToOne(() => Services, service => service.appointments)
     @JoinColumn({ name: 'services_id' })
     service!: Services

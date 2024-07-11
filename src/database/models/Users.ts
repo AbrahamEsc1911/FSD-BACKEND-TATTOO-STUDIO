@@ -35,4 +35,7 @@ export class Users extends BaseEntity {
 
     @OneToMany(() => Appointments, appointments => appointments.user)
     appointments!: Appointments[]
+
+    @OneToMany(() => Appointments, appointmentsArtist => appointmentsArtist.artist)
+    appointmentsArtist!: Appointments[]
 }

@@ -10,7 +10,30 @@ export const getAppointmentsById = async (req: Request, res: Response) => {
 
         const appoinment = await Appointments.findOne(
             {
-                where: { id: appointmentId }
+                select: { ///TODO
+                    user: {
+                        id: true,
+                        name: true,
+                        email: true,
+                    },
+                    service: {
+                        id: true,
+                        name: true,
+                        description: true,
+                    },
+                    artist: {
+                        name:true,
+                    }
+                },
+
+                where: {
+                    id: appointmentId
+                },
+                relations: {
+                    user: true,
+                    service: true,
+                    artist: true,
+                }
             }
         )
 
@@ -49,8 +72,28 @@ export const getAllAppoinmentsByUserId = async (req: Request, res: Response) => 
 
         const userAppointments = await Appointments.find(
             {
+                select: { ///TODO
+                    user: {
+                        id: true,
+                        name: true,
+                        email: true,
+                    },
+                    service: {
+                        id: true,
+                        name: true,
+                        description: true,
+                    },
+                    artist: {
+                        name:true,
+                    }
+                },
                 where: {
-                    id: id
+                    users_id: id
+                },
+                relations: {
+                    user: true,
+                    service: true,
+                    artist: true,
                 }
             }
         )
@@ -100,7 +143,7 @@ export const createAppointments = async (req: Request, res: Response) => {
                 }
             )
         }
-        
+
         if (new Date(req.body.due_date) < date) {
             return res.status(400).json(
                 {
