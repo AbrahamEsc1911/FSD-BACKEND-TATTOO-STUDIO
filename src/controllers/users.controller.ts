@@ -1,8 +1,6 @@
 import bcrypt from 'bcrypt'
 import { Request, Response } from "express";
 import { Users } from "../database/models/Users";
-import { Roles } from "../database/models/Roles";
-import { parse } from "dotenv";
 
 
 //// GET
@@ -78,7 +76,6 @@ export const getProfile = async (req: Request, res: Response) => {
     }
 }
 
-/////TODO
 export const getUserByEmail = async (req: Request, res: Response) => {
     try {
 
@@ -116,7 +113,49 @@ export const getUserByEmail = async (req: Request, res: Response) => {
     }
 }
 
-////TODO
+export const getAllArtists = async (req: Request, res: Response) => {
+    try {
+        
+        const artists = await Users.find(
+            {
+                where: {
+                    roles_id: 2
+                }
+            }
+        )
+
+        if(!artists){
+            return res.status(400).json(
+                {
+                    success: false,
+                    message: 'No one artist to show'
+                }
+            )
+        }
+
+        res.json(
+            {
+                success: true,
+                message: 'All artists',
+                data: artists
+            }
+        )
+
+    } catch (error) {
+        
+        res.status(500).json(
+            {
+                success: false,
+                message: 'Error retriving all artists',
+                error: error
+            }
+        )
+
+    }
+}
+
+//// PUT
+
 export const updateUser = async (req: Request, res: Response) => {
     try {
 
@@ -195,6 +234,8 @@ export const updateRoleById = async (req: Request, res: Response) => {
         )
     }
 }
+
+//// DELETE
 
 export const deleteUser = async (req: Request, res: Response) => {
     try {

@@ -1,5 +1,7 @@
+import { parse } from "dotenv";
 import { AppDataSource } from "../db";
 import { Users } from "../models/Users";
+import bcrypt from 'bcrypt'
 
 
 export const usersSeeders = async () => {
@@ -44,14 +46,16 @@ export const usersSeeders = async () => {
 const createUsers = async (arr: object[]) => {
     const newUsers: Users[] = []
 
-    arr.forEach((elemento: any, index: any) => {
+    arr.forEach((element: any, index: any) => {
+
+  
 
         const user = new Users()
         user.id = index + 1
-        user.roles_id = elemento.roles_id
-        user.name = elemento.name
-        user.email = elemento.email
-        user.password = elemento.password
+        user.roles_id = element.roles_id
+        user.name = element.name
+        user.email = element.email
+        user.password = element.password
         newUsers.push(user)
     })
 
