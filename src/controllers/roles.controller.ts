@@ -7,7 +7,20 @@ import { Roles } from "../database/models/Roles";
 export const getAllRoles = async (req: Request, res: Response) => {
     try {
 
-        const allRoles = await Roles.find()
+        const allRoles = await Roles.find(
+            {
+                select: {
+                    name:true,
+                    users: {
+                        name:true,
+                        email:true,
+                    }
+                },
+                relations: {
+                    users: true
+                }
+            }
+        )
 
         res.json(
             {
