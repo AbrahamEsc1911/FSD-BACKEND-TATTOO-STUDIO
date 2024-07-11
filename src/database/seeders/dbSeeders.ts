@@ -1,4 +1,4 @@
-import { appointmentsSeeders } from "./appointmentesSeeders";
+import { appointmentsSeeders } from "./appointmentSeeders";
 import { rolesSeeders } from "./rolesSeeders"
 import { servicesSeeders } from "./servicesSeeders";
 import { usersSeeders } from "./usersSeeders";

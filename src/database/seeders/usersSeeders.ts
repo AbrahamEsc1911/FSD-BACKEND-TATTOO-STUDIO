@@ -1,4 +1,3 @@
-import { parse } from "dotenv";
 import { AppDataSource } from "../db";
 import { Users } from "../models/Users";
 import bcrypt from 'bcrypt'

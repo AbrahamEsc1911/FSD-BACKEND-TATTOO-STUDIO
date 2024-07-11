@@ -3,7 +3,7 @@ import { MigrationInterface, QueryRunner, Table } from "typeorm";
 export class Roles1720621429904 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.createTable(new Table ({
+        await queryRunner.createTable(new Table({
             name: 'roles',
             columns: [
                 {
@@ -12,7 +12,7 @@ export class Roles1720621429904 implements MigrationInterface {
                     isPrimary: true,
                     isGenerated: true,
                     generationStrategy: 'increment'
-                }, 
+                },
                 {
                     name: 'name',
                     type: 'varchar',

@@ -39,7 +39,6 @@ export const getAllRoles = async (req: Request, res: Response) => {
     }
 }
 
-
 //// POST
 
 export const createRoles = async (req: Request, res: Response) => {

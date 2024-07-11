@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { Services } from "../database/models/Services";
 
 
-
 //// GET
 export const getAllServices = async (req: Request, res: Response) => {
     try {
@@ -43,7 +42,7 @@ export const createNewServices = async (req: Request, res: Response) => {
         const createServices = await Services.create({
             name: name,
             description: description,
-          
+
         }).save()
 
         res.json({

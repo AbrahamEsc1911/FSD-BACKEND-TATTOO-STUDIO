@@ -1,4 +1,4 @@
-import { Router  } from "express";
+import { Router } from "express";
 import { createNewServices, deleteServices, getAllServices, updateServices } from "../controllers/services.controller";
 import { auth } from "../middlewares/auth";
 import { isAdminOrSuper } from "../middlewares/isAdminOrSuper";

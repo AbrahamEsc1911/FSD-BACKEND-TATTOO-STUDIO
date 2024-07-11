@@ -11,5 +11,4 @@ export class Roles extends BaseEntity {
 
     @OneToMany(() => Users, users => users.role)
     users!: Users[]
-
 }
