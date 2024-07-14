@@ -18,7 +18,7 @@
   </ol>
 </details>
 
-## TATTOO STUDIO 
+## Tattoo Studio 
 En este proyecto se requería el desarrollo de una API con una base de datos de clientes, servicios y artistas, el objetivo de esta API es permitir la creación, consulta y modificación de citas entre clientes y servicios, con la posibilidad de asignar a un artista para llevar a cabo el servicio.
 
 ## Sobre el proyecto
@@ -83,7 +83,7 @@ Tecnologías utilizadas:
                 "password": "12345678"
                 }
         ```
-    - REGISTER ADMIN/ARTISTS
+    - REGISTER ADMIN / ARTISTS
 
              POST http://localhost:3380/api/auth/admin
          body:
@@ -104,5 +104,180 @@ Tecnologías utilizadas:
                 "password": "12345678"
             }
         ```
+- ROLES
+    - GET ALL ROLES (SUPER ADMIN)
 
+            GET http://localhost:3380/api/roles
+        Bearer Token:
+        ```js
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+        ```
+    - CREATE ROLES (SUPER ADMIN)
+
+            POST http://localhost:3380/api/roles
+        Bearer Token:
+        ```js
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+        ```
+        body:
+        ```js
+            {
+                "name": "tatuador"
+            }
+        ```
+    - DELETE ROLES (SUPER ADMIN)
+
+            DELETE http://localhost:3380/api/roles/:id_role
+        Bearer Token:
+        ```js
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+         ```
+- USERS
+    - GET ALL USERS (SUPER ADMIN)
+
+            GET http://localhost:3380/api/users
+        Bearer Token:
+        ```js
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+         ```
+    - GET USER PROFILE
+
+            GET http://localhost:3380/api/users/profile
+        Bearer Token:
+        ```js
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+         ```
+    - UPDATE USER PROFILE
+
+            PUT http://localhost:3380/api/users/profile
+        Bearer Token:
+        ```js
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+         ```
+        body:
+        ```js
+        {
+            "name": "tatuador",
+            "email": "tatuador@tatuador.com",
+            "password": "12345678"
+        }
+        ```
+
+    - UPDATE USER ROLE (SUPER ADMIN)
+
+            PUT http://localhost:3380/api/users/1/role
+        Bearer Token:
+        ```js
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+        ```
+        body:
+        ```js
+            {
+                "roles_id": 3
+            }
+        ```
+    - DELETE USER (SUPER ADMIN)
+
+            PUT http://localhost:3380/api/users/:user_id
+        Bearer Token:
+        ```js
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+        ```
+    - GET USER BY EMAIL (SUPER ADMIN)
+
+            PUT http://localhost:3380/api/users/filters?email=example@example.com
+        Bearer Token:
+        ```js
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+        ```
+        Params:
+        ```js
+            email=example@example.com
+        ```
+    - GET ALL ARTISTS
+
+            GET http://localhost:3380/api/users/artists
+
+- SERVICES
+    - GET ALL SERVICES
+
+            GET http://localhost:3380/api/services
+
+    - CREATE NEW SERVICES (ADMIN - SUPER ADMIN)
+
+            POST http://localhost:3380/api/services
+        Bearer Token:
+        ```js
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+        ```
+        body:
+        ```js
+            {
+                "name": "service name",
+                "description": "service descriptión."
+            }
+        ```
+    - UPDATE SERVICES (ADMIN - SUPER ADMIN)
+
+            PUT http://localhost:3380/api/services/:service_id
+        Bearer Token:
+        ```js
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+        ```
+        body:
+        ```js
+            {
+                "name": "service name",
+                "description": "service descriptión."
+            }
+        ```
+    - DELETE SERVICES (ADMIN - SUPER ADMIN)
+
+            DELETE http://localhost:3380/api/services/services_id
+
+- APPOINTMENTS
+    - GET APPOINTMENTS BY ID (SUPER ADMIN)
+
+            GET http://localhost:3380/api/appointments/appointments_id
+        Bearer Token:
+        ```js
+            ExampleTokenJsonWebToken
+        ```
+    - GET APPOINTMENTS BY USER ID
+
+            GET http://localhost:3380/api/appointments
+        Bearer Token:
+        ```js
+            ExampleTokenJsonWebToken
+        ```
+    - CREATE APPOINMENTS
+
+            POST http://localhost:3380/api/appointments
+        Bearer Token:
+        ```js
+            ExampleTokenJsonWebToken
+        ```
+        body: 
+        ```js
+            {
+                "services_id": "1",
+                "due_date": "2024-07-09",
+                "artists_id": 3
+            }
+        ```
+    - UPDATE APPOINTMENTS
+
+            POST http://localhost:3380/api/appointments
+        Bearer Token:
+        ```js
+            ExampleTokenJsonWebToken
+        ```
+        body:
+        ```js
+            {
+                "services_id": "1",
+                "due_date": "2024-07-09",
+                "artists_id": 3
+            }
+        ```
 </details>

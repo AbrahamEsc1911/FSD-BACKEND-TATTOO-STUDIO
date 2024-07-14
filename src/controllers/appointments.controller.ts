@@ -190,7 +190,7 @@ export const createAppointments = async (req: Request, res: Response) => {
 export const updateAppointments = async (req: Request, res: Response) => {
     try {
 
-        const appoinmentId = req.body.id
+        const appoinmentId = Number(req.params.id)
         const body = req.body
         const date = new Date()
 
