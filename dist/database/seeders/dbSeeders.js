@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const appointmentesSeeders_1 = require("./appointmentesSeeders");
+const appointmentSeeders_1 = require("./appointmentSeeders");
 const rolesSeeders_1 = require("./rolesSeeders");
 const servicesSeeders_1 = require("./servicesSeeders");
 const usersSeeders_1 = require("./usersSeeders");
@@ -18,6 +18,6 @@ const usersSeeders_1 = require("./usersSeeders");
     yield (0, rolesSeeders_1.rolesSeeders)();
     yield (0, usersSeeders_1.usersSeeders)();
     yield (0, servicesSeeders_1.servicesSeeders)();
-    yield (0, appointmentesSeeders_1.appointmentsSeeders)();
+    yield (0, appointmentSeeders_1.appointmentsSeeders)();
     console.log('finish seeders');
 }))();

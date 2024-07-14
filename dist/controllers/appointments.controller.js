@@ -156,7 +156,7 @@ exports.createAppointments = createAppointments;
 //// UPDATE
 const updateAppointments = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const appoinmentId = req.body.id;
+        const appoinmentId = Number(req.params.id);
         const body = req.body;
         const date = new Date();
         if (!appoinmentId) {

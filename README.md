@@ -106,14 +106,14 @@ Tecnologías utilizadas:
             GET http://localhost:3380/api/roles
         Bearer Token:
         ```js
-            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+            ExampleTokenJsonWebToken
         ```
     - CREATE ROLES (SUPER ADMIN)
 
             POST http://localhost:3380/api/roles
         Bearer Token:
         ```js
-            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+            ExampleTokenJsonWebToken
         ```
         body:
         ```js
@@ -126,7 +126,7 @@ Tecnologías utilizadas:
             DELETE http://localhost:3380/api/roles/:id_role
         Bearer Token:
         ```js
-            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+            ExampleTokenJsonWebToken
          ```
 - USERS
     - GET ALL USERS (SUPER ADMIN)
@@ -134,21 +134,21 @@ Tecnologías utilizadas:
             GET http://localhost:3380/api/users
         Bearer Token:
         ```js
-            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+            ExampleTokenJsonWebToken
          ```
     - GET USER PROFILE
 
             GET http://localhost:3380/api/users/profile
         Bearer Token:
         ```js
-            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+            ExampleTokenJsonWebToken
          ```
     - UPDATE USER PROFILE
 
             PUT http://localhost:3380/api/users/profile
         Bearer Token:
         ```js
-            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+            ExampleTokenJsonWebToken
          ```
         body:
         ```js
@@ -164,7 +164,7 @@ Tecnologías utilizadas:
             PUT http://localhost:3380/api/users/1/role
         Bearer Token:
         ```js
-            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+            ExampleTokenJsonWebToken
         ```
         body:
         ```js
@@ -177,14 +177,14 @@ Tecnologías utilizadas:
             PUT http://localhost:3380/api/users/:user_id
         Bearer Token:
         ```js
-            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+            ExampleTokenJsonWebToken
         ```
     - GET USER BY EMAIL (SUPER ADMIN)
 
             PUT http://localhost:3380/api/users/filters?email=example@example.com
         Bearer Token:
         ```js
-            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+            ExampleTokenJsonWebToken
         ```
         Params:
         ```js
@@ -204,7 +204,7 @@ Tecnologías utilizadas:
             POST http://localhost:3380/api/services
         Bearer Token:
         ```js
-            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+            ExampleTokenJsonWebToken
         ```
         body:
         ```js
@@ -218,7 +218,7 @@ Tecnologías utilizadas:
             PUT http://localhost:3380/api/services/:service_id
         Bearer Token:
         ```js
-            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6MywiZW1haWwiOiJhYnJhaGFtLmVzY29iYXJAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjA3MjUxMzQsImV4cCI6MTcyMDcyODczNH0.jxfLmca7YJHKxXsj3kC05hpKYEM3OCL9ADIUFWfegeE
+            ExampleTokenJsonWebToken
         ```
         body:
         ```js
@@ -263,7 +263,7 @@ Tecnologías utilizadas:
         ```
     - UPDATE APPOINTMENTS
 
-            POST http://localhost:3380/api/appointments
+            POST http://localhost:3380/api/appointments/:id
         Bearer Token:
         ```js
             ExampleTokenJsonWebToken

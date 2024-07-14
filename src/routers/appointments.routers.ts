@@ -8,6 +8,6 @@ const router = Router()
 router.get('/:id', auth, isSuperAdmin, getAppointmentsById)
 router.get('/', auth, getAllAppoinmentsByUserId)
 router.post('/', auth, createAppointments)
-router.put('/', auth, updateAppointments)
+router.put('/:id', auth, updateAppointments)
 
 export { router }
