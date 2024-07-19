@@ -201,8 +201,6 @@ export const updateUser = async (req: Request, res: Response) => {
         }
         const body = { name: name, email: email, password: password }
 
-
-
         const userUpdated = await Users.update(
             {
                 id: Number(id)

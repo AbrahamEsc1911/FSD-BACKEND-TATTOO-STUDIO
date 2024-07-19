@@ -173,7 +173,6 @@ export const createAppointments = async (req: Request, res: Response) => {
                 data: newAppointment
             }
         )
-
     } catch (error) {
         res.status(500).json(
             {
@@ -186,10 +185,8 @@ export const createAppointments = async (req: Request, res: Response) => {
 }
 
 //// UPDATE
-
 export const updateAppointments = async (req: Request, res: Response) => {
     try {
-
         const appoinmentId = Number(req.params.id)
         const body = req.body
         const date = new Date()

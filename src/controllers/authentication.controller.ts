@@ -109,8 +109,6 @@ export const loginUser = async (req: Request, res: Response) => {
                 data: token
             }
         )
-
-
     } catch (error) {
         res.status(500).json({
             success: false,
