@@ -86,7 +86,7 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             expiresIn: "1h"
         });
         res.json({
-            succes: true,
+            success: true,
             message: 'User logged',
             data: token
         });

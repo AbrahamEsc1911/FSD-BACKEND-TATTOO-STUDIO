@@ -87,7 +87,7 @@ export const deleteRoles = async (req: Request, res: Response) => {
         }
 
         res.json({
-            succes: true,
+            success: true,
             message: 'role deleted',
             date: roleDeleted
         })

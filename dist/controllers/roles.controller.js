@@ -75,7 +75,7 @@ const deleteRoles = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             });
         }
         res.json({
-            succes: true,
+            success: true,
             message: 'role deleted',
             date: roleDeleted
         });

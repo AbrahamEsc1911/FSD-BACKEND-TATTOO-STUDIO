@@ -74,7 +74,7 @@ export const loginUser = async (req: Request, res: Response) => {
             return res.status(400).json(
                 {
                     success: false,
-                    message: 'email or password invalid'
+                    message: 'Email or password invalid'
                 }
             )
         }
@@ -84,8 +84,8 @@ export const loginUser = async (req: Request, res: Response) => {
         if (!passCompared) {
             return res.status(400).json(
                 {
-                    success: true,
-                    message: 'email or password invalid'
+                    success: false,
+                    message: 'Email or password invalid'
                 }
             )
         }
@@ -97,16 +97,14 @@ export const loginUser = async (req: Request, res: Response) => {
                 email: users.email
             },
             process.env.SECRET_KEY as string,
-            {
-                expiresIn: "1h"
-            }
+           
         )
 
         res.json(
             {
-                succes: true,
+                success: true,
                 message: 'User logged',
-                data: token
+                token: token
             }
         )
     } catch (error) {

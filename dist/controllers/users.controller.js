@@ -67,7 +67,7 @@ const getProfile = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             },
         });
         res.json({
-            succes: true,
+            success: true,
             message: 'User profile',
             data: userProfile
         });
@@ -174,7 +174,7 @@ const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             id: Number(id)
         }, body);
         res.json({
-            succes: true,
+            success: true,
             message: 'Profile updated successfully',
             data: userUpdated
         });

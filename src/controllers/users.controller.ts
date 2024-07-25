@@ -69,7 +69,7 @@ export const getProfile = async (req: Request, res: Response) => {
 
         res.json(
             {
-                succes: true,
+                success: true,
                 message: 'User profile',
                 data: userProfile
             }
@@ -201,6 +201,39 @@ export const updateUser = async (req: Request, res: Response) => {
         }
         const body = { name: name, email: email, password: password }
 
+        const user = await Users.findOne({
+            where: {
+                id: id
+            }
+        })
+
+        if(!user){
+            return res.status(404).json(
+                {
+                    success: false,
+                    message: 'User not found',
+                }
+            )
+        }
+
+        if(user.name === name) {
+            return res.status(400).json(
+                {
+                    success: false,
+                    message: 'can not updated your name if is the same'
+                }
+            )
+        }
+
+        if(user.email === email) {
+            return res.status(400).json(
+                {
+                    success: false,
+                    message: 'can not updated your email if is the same'
+                }
+            )
+        }
+
         const userUpdated = await Users.update(
             {
                 id: Number(id)
@@ -209,7 +242,7 @@ export const updateUser = async (req: Request, res: Response) => {
 
         res.json(
             {
-                succes: true,
+                success: true,
                 message: 'Profile updated successfully',
                 data: userUpdated
             })
@@ -217,7 +250,7 @@ export const updateUser = async (req: Request, res: Response) => {
     } catch (error: any) {
         res.status(500).json({
             success: false,
-            message: 'Wrong request to update user profile',
+            message: 'Error updating user data',
             error: error.message
 
         })
