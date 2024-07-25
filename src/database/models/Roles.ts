@@ -9,6 +9,6 @@ export class Roles extends BaseEntity {
     @Column({ name: 'name' })
     name!: string
 
-    @OneToMany(() => Users, users => users.role)
+    @OneToMany(() => Users, users => users.role, { cascade: true, onDelete: 'CASCADE' })
     users!: Users[]
 }

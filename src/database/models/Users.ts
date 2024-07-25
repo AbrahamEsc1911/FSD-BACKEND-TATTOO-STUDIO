@@ -32,9 +32,9 @@ export class Users extends BaseEntity {
     @JoinColumn({ name: 'roles_id' })
     role!: Roles
 
-    @OneToMany(() => Appointments, appointments => appointments.user)
+    @OneToMany(() => Appointments, appointments => appointments.user, { cascade: true, onDelete: 'CASCADE' })
     appointments!: Appointments[]
 
-    @OneToMany(() => Appointments, appointmentsArtist => appointmentsArtist.artist)
+    @OneToMany(() => Appointments, appointmentsArtist => appointmentsArtist.artist, { cascade: true, onDelete: 'CASCADE' })
     appointmentsArtist!: Appointments[]
 }

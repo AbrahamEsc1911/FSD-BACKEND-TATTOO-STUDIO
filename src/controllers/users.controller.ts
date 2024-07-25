@@ -12,6 +12,7 @@ export const getAllUsers = async (req: Request, res: Response) => {
         const users = await Users.find(
             {
                 select: {
+                    id: true,
                     name: true,
                     email: true,
                     created_at: true,
@@ -322,6 +323,10 @@ export const deleteUser = async (req: Request, res: Response) => {
                 data: userDeleted,
             }
         )
+
+        //TODO Gestionar una eliminación on cascade porque sino cuando intente eliminar un usuario que 
+        // tiene relacion con otras tablas, no lo puede eliminar.
+
 
     } catch (error) {
         res.status(500).json(

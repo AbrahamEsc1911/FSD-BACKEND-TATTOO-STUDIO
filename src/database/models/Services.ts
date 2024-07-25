@@ -16,7 +16,7 @@ export class Services extends BaseEntity {
     @Column({ name: 'created_at' })
     created_at!: Date
 
-    @OneToMany(() => Appointments, appointments => appointments.service)
+    @OneToMany(() => Appointments, appointments => appointments.service, { cascade: true, onDelete: 'CASCADE' })
     appointments!: Appointments[]
 
 }
