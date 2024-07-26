@@ -143,6 +143,7 @@ export const getAllArtists = async (req: Request, res: Response) => {
         const artists = await Users.find(
             {
                 select: {
+                    id: true,
                     name: true,
                     email: true,
                     role: {
