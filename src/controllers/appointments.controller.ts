@@ -188,7 +188,7 @@ export const createAppointments = async (req: Request, res: Response) => {
 export const updateAppointments = async (req: Request, res: Response) => {
     try {
         const appoinmentId = Number(req.params.id)
-        const body = req.body
+        const {services_id, due_date, artists_id, is_active} = req.body
         const date = new Date()
 
         if (!appoinmentId) {
@@ -209,7 +209,12 @@ export const updateAppointments = async (req: Request, res: Response) => {
             )
         }
 
-        const appoinmentUpdated = await Appointments.update({ id: appoinmentId }, body)
+        const appoinmentUpdated = await Appointments.update({ id: appoinmentId }, {
+            services_id: services_id,
+            due_date: due_date,
+            artists_id: artists_id,
+            is_active: is_active
+        })
 
         res.json(
             {
