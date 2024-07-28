@@ -29,6 +29,12 @@ export class Services1720621572158 implements MigrationInterface {
                     type: 'datetime',
                     default: 'now()'
                 },
+                {
+                    name: 'image',
+                    type: 'varchar',
+                    length: '350',
+                    isNullable: true
+                }
             ],
         }))
     }

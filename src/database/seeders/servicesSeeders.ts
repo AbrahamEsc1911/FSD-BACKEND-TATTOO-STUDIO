@@ -7,11 +7,13 @@ export const servicesSeeders = async () => {
         await AppDataSource.initialize()
 
         const services = [
-            { name: 'Tatuajes personalizados', description: 'Los clientes tendrán la libertad de seleccionar motivos y diseños únicos, personalizando completamente su experiencia de tatuaje de acuerdo a sus preferencias y gustos.' },
-            { name: 'Tatuajes del catálogo', description: 'Ofrecemos la realización de tatuajes basados en diseños predefinidos en nuestro catálogo. Los clientes pueden elegir entre una variedad de opciones estilizadas y probadas.' },
-            { name: 'Restauración y rejuvenecimiento de trabajos', description: 'Nos especializamos en la restauración y rejuvenecimiento de tatuajes existentes. Nuestros expertos trabajan para mejorar y renovar tatuajes antiguos, devolviéndoles su vitalidad.' },
-            { name: 'Colocación de piercings y dilatadores', description: 'Ofrecemos servicios profesionales para la colocación de piercings y dilatadores. Nuestro equipo garantiza procedimientos seguros y estilos variados para satisfacer las preferencias individualesde nuestros clientes.' },
-            { name: 'Venta de piercings y otros artículos', description: 'Además de nuestros servicios de aplicación, ofrecemos una selección de piercings y otrosartículos relacionados con el arte corporal. Los clientes pueden adquirir productos de calidad paracomplementar su estilo único.' }
+            { name: 'Tatuajes personalizados', description: 'Los clientes tendrán la libertad de seleccionar motivos y diseños únicos, personalizando completamente su experiencia de tatuaje de acuerdo a sus preferencias y gustos.', image: "./images/ser-1.svg"},
+            { name: 'Tatuajes del catálogo', description: 'Ofrecemos la realización de tatuajes basados en diseños predefinidos en nuestro catálogo. Los clientes pueden elegir entre una variedad de opciones estilizadas y probadas.', image: "./images/ser-2.svg"  },
+            { name: 'Restauración y rejuvenecimiento de trabajos', description: 'Nos especializamos en la restauración y rejuvenecimiento de tatuajes existentes. Nuestros expertos trabajan para mejorar y renovar tatuajes antiguos, devolviéndoles su vitalidad.', image: "./images/ser-3.svg" },
+            { name: 'Colocación de piercings y dilatadores', description: 'Ofrecemos servicios profesionales para la colocación de piercings y dilatadores. Nuestro equipo garantiza procedimientos seguros y estilos variados para satisfacer las preferencias individualesde nuestros clientes.', image: "./images/ser-2.svg" },
+            { name: 'Venta de piercings y otros artículos', description: 'Además de nuestros servicios de aplicación, ofrecemos una selección de piercings y otrosartículos relacionados con el arte corporal. Los clientes pueden adquirir productos de calidad paracomplementar su estilo único.', image: "./images/ser-3.svg" },
+            { name: 'Tattoo Cover Up', description: 'Transformamos tatuajes antiguos o no deseados en nuevas obras de arte', image: "./images/ser-1.svg" },
+            { name: 'Venta de piercings y otros artículos', description: 'Además de nuestros servicios de aplicación, ofrecemos una selección de piercings y otrosartículos relacionados con el arte corporal. Los clientes pueden adquirir productos de calidad paracomplementar su estilo único.', image: "./images/ser-2.svg" }
         ]
 
         const newServices = await createServices(services)
@@ -43,6 +45,7 @@ const createServices = async (arr: object[]) => {
         const service = new Services()
         service.name = element.name
         service.description = element.description
+        service.image = element.image
         newServices.push(service)
 
     })
