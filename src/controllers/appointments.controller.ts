@@ -234,3 +234,36 @@ export const updateAppointments = async (req: Request, res: Response) => {
         )
     }
 }
+
+export const deleteAppointmentesById = async (req: Request, res: Response) => {
+    try {
+
+        const id = Number(req.params.id)
+
+        const appoinmentDeleted = await Appointments.delete(id)
+
+        if(appoinmentDeleted.affected === 0){
+            return res.status(404).json(
+                {
+                    success: false,
+                    message: 'nothing found to delete'
+                }
+            )
+        }
+
+        res.json(
+            {
+                success: true,
+                message: 'Appointment deleted'
+            }
+        )
+        
+    } catch (error) {
+        res.status(500).json(
+            {
+                success: false,
+                message: 'Error to delete appointment'
+            }
+        )
+    }
+}
